@@ -104,6 +104,10 @@ function restartGame() {
 	moves = 0; // reset moves
 	points = 0; // reset points
 	moves_info.innerHTML = moves; // change moves to actual value
+	
+	stars.forEach(function(element) { // this loop reset stars
+		element.className = "icon-star";
+	});
 }
 
 /*
