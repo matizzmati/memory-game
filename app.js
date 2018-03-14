@@ -12,7 +12,7 @@ function turnCard() {
 	    if (cardsArray.length == 2) { // if 2 cards were clicked
 	    	moves += 1; // count moves
 	    	changeStars(); // check function conditions
-	    	document.querySelector(".moves__count").innerHTML = moves;
+	    	moves_info.innerHTML = moves;
 	    	flag = false; // change flag to false to prevent next clicks on whole game board until animation end
 	    	setTimeout(checkReversals, 155); // call next function, with delay 1500ms
 	    }
@@ -57,16 +57,16 @@ function changeStars() {
 	else if (moves == 15) {
 		stars[2].className = "icon-star-empty";
 	}
-	else if (moves == 18) {
+	else if (moves == 17) {
 		stars[1].className = "icon-star-half-alt";
 	}
-	else if (moves == 21) {
+	else if (moves == 19) {
 		stars[1].className = "icon-star-empty";
 	}
-	else if (moves == 24) {
+	else if (moves == 21) {
 		stars[0].className = "icon-star-half-alt";
 	}
-	else if (moves == 27) {
+	else if (moves == 23) {
 		stars[0].className = "icon-star-empty";
 	}
 
@@ -85,7 +85,25 @@ function shuffle() {
 
 	card_backs.forEach(function(cb) {
 		cb.classList.add(classes.splice(Math.floor( (Math.random()*classes.length)), 1 ));
+	
 	});
+}
+
+/*
+This function reset whole game board
+*/
+function restartGame() {
+	// reset classes 
+	card_backs.forEach(function(cb) {
+		cb.className = ""; // clear class of an element
+		cb.classList.add("card__back"); // bring back "card__back" class
+		cb.style.display="none"; // hide card
+	});
+	shuffle(); // put cards in random order
+	addListeners(); // add listeneres again
+	moves = 0; // reset moves
+	points = 0; // reset points
+	moves_info.innerHTML = moves; // change moves to actual value
 }
 
 /*
@@ -93,21 +111,30 @@ Code below assign all html elements with class
 "card" to cards variable, then add 
 Event Listener to each of them
 */
-const cards = document.querySelectorAll(".card");
-cards.forEach(function(card) {
-	card.addEventListener("click", turnCard);
-});
+function addListeners() {
+	const cards = document.querySelectorAll(".card");
+	cards.forEach(function(card) {
+		card.addEventListener("click", turnCard);
+	});
+}
 
 
 let cardsArray = []; // Declare empty array for memorize cards
 let points = 0; // Declare points variable to count points
 let flag = true; // Declare flag to check if the function can be performed
 let moves = 0;
+const button = document.querySelector(".game-bar__restart"); // Grab button element
+const moves_info = document.querySelector(".moves__count");  // Grab html element with number of moves
+
+button.addEventListener("click", restartGame);
 
 // Grab all elements with "card__back" class
 const card_backs = document.querySelectorAll(".card__back");
 
 // Grab all elements with "icon-star" class
 const stars = document.querySelectorAll(".icon-star");
+
 shuffle();
+addListeners();
+
 
