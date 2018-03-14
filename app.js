@@ -1,11 +1,23 @@
 /*
+This two functions below are used 
+to manipulate CSS to show or hide card
+*/
+function showCard(x) {
+	x.style.transform="rotateY(0deg)";
+}
+
+function hideCard(x) {
+	x.style.transform="rotateY(90deg)";
+}
+
+/*
 The function below shows shape of card back
 and adds the revealing mechanics
 */
 function turnCard() {
 	if (flag == true) { // only if flag == true, carry on
 	    const card = this.children[0]; // assign children element of clicked div to variable
-	    card.style.transform="rotateY(0deg)"; // change style of display to show the shape
+	    showCard(card); // change style of transform to show the shape
 	    cardsArray.push(card); // and push it "cardsArray" 
 	    this.removeEventListener("click", turnCard); // remove event listener to prevent next clicks
 
@@ -32,8 +44,8 @@ function checkReversals() {
 		}	
 	}
 	else { // if card back weren't the same:
-		cardsArray[0].style.transform="rotateY(90deg)"; // hide cards
-		cardsArray[1].style.transform="rotateY(90deg)";
+		hideCard(cardsArray[0]) // hide cards
+		hideCard(cardsArray[1])
 		
 		/*
 		add event listeners again, because it 
@@ -57,19 +69,18 @@ function changeStars() {
 	else if (moves == 15) {
 		stars[2].className = "icon-star-empty";
 	}
-	else if (moves == 17) {
+	else if (moves == 18) {
 		stars[1].className = "icon-star-half-alt";
 	}
-	else if (moves == 19) {
+	else if (moves == 21) {
 		stars[1].className = "icon-star-empty";
 	}
-	else if (moves == 21) {
+	else if (moves == 24) {
 		stars[0].className = "icon-star-half-alt";
 	}
-	else if (moves == 23) {
+	else if (moves == 27) {
 		stars[0].className = "icon-star-empty";
 	}
-
 }
 
 /*
@@ -85,7 +96,6 @@ function shuffle() {
 
 	card_backs.forEach(function(cb) {
 		cb.classList.add(classes.splice(Math.floor( (Math.random()*classes.length)), 1 ));
-	
 	});
 }
 
