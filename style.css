@@ -1,19 +1,47 @@
 * {
 	margin: 0;
 	padding: 0;
+	font-family: 'Quicksand', sans-serif;
 }
 
 h1 {
 	text-align: center;
 	margin-top: 50px;
 }
+
+.game-bar {
+	width: 300px;
+	height: 20px;
+	margin: auto;
+	margin-top: 20px;
+}
+
+.game-bar__stars {
+	display: flex;
+	float: left;
+}
+
+.game-bar__moves {
+	float: left;
+	margin-left: 20px;
+}
+
+.moves__count {
+	float: left;
+	width: 20px;
+}
+
+.game-bar__restart {
+	float: right;
+}
+
 .game-wrapper {
 	display: flex;
 	flex-wrap: wrap;
 	width: 600px;
 	height: 600px;
 	margin: auto;
-	margin-top: 50px;
+	margin-top: 5px;
 	padding: 10px;
 	background-color: #b0e0e6;
 	border-radius: 8px;

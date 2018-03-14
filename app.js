@@ -55,7 +55,7 @@ function shuffle() {
 	"icon-heart", "icon-camera", "icon-ambulance", "icon-thumbs-up-alt", "icon-paper-plane", "icon-binoculars", "icon-plug", "icon-user-secret"];
 
 	card_backs.forEach(function(cb) {
-		cb.classList.add(classes.splice(Math.floor((Math.random()*classes.length)), 1 ));
+		cb.classList.add(classes.splice(Math.floor( (Math.random()*classes.length)), 1 ));
 	});
 }
 
