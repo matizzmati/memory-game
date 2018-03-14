@@ -35,6 +35,10 @@ h1 {
 	float: right;
 }
 
+.icon-arrows-cw:hover {
+	cursor: pointer;
+}
+
 .game-wrapper {
 	display: flex;
 	flex-wrap: wrap;
@@ -48,17 +52,23 @@ h1 {
 	-webkit-box-shadow: 10px 10px 36px 2px rgba(0,0,0,0.38);
 	-moz-box-shadow: 10px 10px 36px 2px rgba(0,0,0,0.38);
 	box-shadow: 10px 10px 36px 2px rgba(0,0,0,0.38);
-
 }
 
 .card {
-	text-align: center;
 	width: 21%;
 	height: 21%;
 	background-color: #0b3047;
 	margin: 2%;
 	border-radius: 8px;
 	box-sizing: border-box;
+	justify-content: center;
+	align-items: center;
+	display: flex;
+}
+
+.card:hover {
+	border: 1px solid #fff;
+	cursor: pointer;
 }
 	
 
@@ -66,14 +76,9 @@ h1 {
 .card__back {
 	transform: rotateY(90deg);
 	font-size: 46px;
-	display: block;
-	padding-top: 35px;
-	width: 100%;
-	height: 100%;
 	color: white;
 	box-sizing: border-box;
 	border-radius: 8px;
-	background-color: #0b3047;
 	transition: all .2s ease-out;
 }
 
