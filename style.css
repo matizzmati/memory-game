@@ -60,8 +60,11 @@ h1 {
 	border-radius: 8px;
 	box-sizing: border-box;
 }
+	
+
 
 .card__back {
+	transform: rotateY(90deg);
 	font-size: 46px;
 	display: block;
 	padding-top: 35px;
@@ -70,8 +73,8 @@ h1 {
 	color: white;
 	box-sizing: border-box;
 	border-radius: 8px;
-	background-color: grey;
-	display: none;
+	background-color: #0b3047;
+	transition: all .2s ease-out;
 }
 
 

@@ -5,7 +5,7 @@ and adds the revealing mechanics
 function turnCard() {
 	if (flag == true) { // only if flag == true, carry on
 	    const card = this.children[0]; // assign children element of clicked div to variable
-	    card.style.display="block"; // change style of display to show the shape
+	    card.style.transform="rotateY(0deg)"; // change style of display to show the shape
 	    cardsArray.push(card); // and push it "cardsArray" 
 	    this.removeEventListener("click", turnCard); // remove event listener to prevent next clicks
 
@@ -14,7 +14,7 @@ function turnCard() {
 	    	changeStars(); // check function conditions
 	    	moves_info.innerHTML = moves;
 	    	flag = false; // change flag to false to prevent next clicks on whole game board until animation end
-	    	setTimeout(checkReversals, 155); // call next function, with delay 1500ms
+	    	setTimeout(checkReversals, 700); // call next function with delay 700ms, also this is the time in which the cards are exposed after second click
 	    }
 	}
 }
@@ -32,8 +32,8 @@ function checkReversals() {
 		}	
 	}
 	else { // if card back weren't the same:
-		cardsArray[0].style.display="none"; // hide cards
-		cardsArray[1].style.display="none";
+		cardsArray[0].style.transform="rotateY(90deg)"; // hide cards
+		cardsArray[1].style.transform="rotateY(90deg)";
 		
 		/*
 		add event listeners again, because it 
@@ -91,15 +91,16 @@ function shuffle() {
 
 /*
 This function reset whole game board
+without refreshing page
 */
 function restartGame() {
 	// reset classes 
 	card_backs.forEach(function(cb) {
 		cb.className = ""; // clear class of an element
 		cb.classList.add("card__back"); // bring back "card__back" class
-		cb.style.display="none"; // hide card
+		cb.style.transform="rotateY(90deg)"; // hide card
 	});
-	shuffle(); // put cards in random order
+	setTimeout(shuffle, 200); // setTimeout function prevents from seeing new shuffled cars for 0.2s (as much as set transition time)
 	addListeners(); // add listeneres again
 	moves = 0; // reset moves
 	points = 0; // reset points
@@ -140,5 +141,3 @@ const stars = document.querySelectorAll(".icon-star");
 
 shuffle();
 addListeners();
-
-
