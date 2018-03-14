@@ -28,7 +28,7 @@ h1 {
 
 .moves__count {
 	float: left;
-	width: 20px;
+	min-width: 25px;
 }
 
 .game-bar__restart {

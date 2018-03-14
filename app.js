@@ -10,6 +10,9 @@ function turnCard() {
 	    this.removeEventListener("click", turnCard); // remove event listener to prevent next clicks
 
 	    if (cardsArray.length == 2) { // if 2 cards were clicked
+	    	moves += 1; // count moves
+	    	changeStars(); // check function conditions
+	    	document.querySelector(".moves__count").innerHTML = moves;
 	    	flag = false; // change flag to false to prevent next clicks on whole game board until animation end
 	    	setTimeout(checkReversals, 155); // call next function, with delay 1500ms
 	    }
@@ -44,6 +47,32 @@ function checkReversals() {
 }
 
 /*
+this function change the icon depending 
+on the numbers of moves
+*/
+function changeStars() {
+	if (moves == 12) {
+		stars[2].className = "icon-star-half-alt";
+	}
+	else if (moves == 15) {
+		stars[2].className = "icon-star-empty";
+	}
+	else if (moves == 18) {
+		stars[1].className = "icon-star-half-alt";
+	}
+	else if (moves == 21) {
+		stars[1].className = "icon-star-empty";
+	}
+	else if (moves == 24) {
+		stars[0].className = "icon-star-half-alt";
+	}
+	else if (moves == 27) {
+		stars[0].className = "icon-star-empty";
+	}
+
+}
+
+/*
 Function shuffle cards in random order
 Take each of the element with class "card__back"
 Splice method remove and return one class from classes array
@@ -73,8 +102,12 @@ cards.forEach(function(card) {
 let cardsArray = []; // Declare empty array for memorize cards
 let points = 0; // Declare points variable to count points
 let flag = true; // Declare flag to check if the function can be performed
+let moves = 0;
 
-// Grab all elements with card__back class
+// Grab all elements with "card__back" class
 const card_backs = document.querySelectorAll(".card__back");
+
+// Grab all elements with "icon-star" class
+const stars = document.querySelectorAll(".icon-star");
 shuffle();
 
