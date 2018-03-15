@@ -10,34 +10,42 @@ h1 {
 }
 
 .game-bar {
-	width: 300px;
-	height: 20px;
+	width: 400px;
 	margin: auto;
 	margin-top: 20px;
+	display: flex;
 }
 
 .game-bar__stars {
 	display: flex;
-	float: left;
+	width: 25%;
 }
 
 .game-bar__moves {
-	float: left;
-	margin-left: 20px;
+	width: 45%;
+	display: flex;
 }
 
 .moves__count {
-	float: left;
-	min-width: 25px;
+	min-width: 20px;
 }
 
 .game-bar__restart {
-	float: right;
+	width: 10%;
 }
 
 .icon-arrows-cw:hover {
 	cursor: pointer;
 	opacity: 0.5;
+}
+
+.timer {
+	width: 20%;
+
+}
+
+.timer__sec {
+	margin-left: 5px;
 }
 
 .game-wrapper {
