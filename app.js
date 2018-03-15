@@ -20,11 +20,12 @@ function turnCard() {
 	    showCard(card); // change style of transform to show the shape
 	    cardsArray.push(card); // and push it "cardsArray" 
 	    this.removeEventListener("click", turnCard); // remove event listener to prevent next clicks
-
+	    moves++; // count clicks
+	    if (moves == 1) timer(); // turn on the stopwatch when first card was clicked
 	    if (cardsArray.length == 2) { // if 2 cards were clicked
-	    	moves += 1; // count moves
+	    	
 	    	changeStars(); // check function conditions
-	    	moves_info.innerHTML = moves;
+	    	moves_info.innerHTML = moves/2; // move occur when 2 cards were clicked
 	    	flag = false; // change flag to false to prevent next clicks on whole game board until animation end
 	    	setTimeout(checkReversals, 300); // call next function with delay 300ms, also this is the time in which the cards are exposed after second click
 	    }
@@ -38,9 +39,10 @@ consecutive clicks show the same shape
 function checkReversals() {
 	if (cardsArray[0].className == cardsArray[1].className) { // if card backs were the same:
 		cardsArray = []; // clear array
-		points += 1; // add 1 point
-		if (points == 8) { // if points == 8 you won ;)
+		points++; // add 1 point
+		if (points == 1) { // if points == 8 you won ;)
 			toggleModal();
+			timerStop();
 		}	
 	}
 	else { // if card back weren't the same:
@@ -63,22 +65,22 @@ this function change the icon depending
 on the numbers of moves
 */
 function changeStars() {
-	if (moves == 12) {
+	if (moves == 12*2) {
 		stars[2].className = "icon-star-half-alt";
 	}
-	else if (moves == 15) {
+	else if (moves == 15*2) {
 		stars[2].className = "icon-star-empty";
 	}
-	else if (moves == 18) {
+	else if (moves == 18*2) {
 		stars[1].className = "icon-star-half-alt";
 	}
-	else if (moves == 21) {
+	else if (moves == 21*2) {
 		stars[1].className = "icon-star-empty";
 	}
-	else if (moves == 24) {
+	else if (moves == 24*2) {
 		stars[0].className = "icon-star-half-alt";
 	}
-	else if (moves == 27) {
+	else if (moves == 27*2) {
 		stars[0].className = "icon-star-empty";
 	}
 }
@@ -115,7 +117,7 @@ function restartGame() {
 	moves = 0; // reset moves
 	points = 0; // reset points
 	moves_info.innerHTML = moves; // change moves to actual value
-	
+	timerStop();
 	stars.forEach(function(element) { // this loop reset stars
 		element.className = "icon-star";
 	});
@@ -151,6 +153,27 @@ const closeButton = document.querySelector(".mc__close-button");
 
 closeButton.addEventListener("click", toggleModal);
 window.addEventListener("click", windowOnClick);
+
+/*
+Code below handle the stopwatch
+*/
+const time = document.querySelector(".timer__sec");
+let seconds = 0;
+function timer() {
+	t = setTimeout(function() {
+		seconds++;
+		time.innerHTML = seconds;
+		timer();
+	}, 1000);
+}
+
+function timerStop() {
+	clearTimeout(t);
+	seconds = 0;
+	time.innerHTML = seconds;
+}
+
+
 
 
 let cardsArray = []; // Declare empty array for memorize cards
