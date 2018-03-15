@@ -26,7 +26,7 @@ function turnCard() {
 	    	changeStars(); // check function conditions
 	    	moves_info.innerHTML = moves;
 	    	flag = false; // change flag to false to prevent next clicks on whole game board until animation end
-	    	setTimeout(checkReversals, 700); // call next function with delay 700ms, also this is the time in which the cards are exposed after second click
+	    	setTimeout(checkReversals, 300); // call next function with delay 300ms, also this is the time in which the cards are exposed after second click
 	    }
 	}
 }
@@ -40,7 +40,7 @@ function checkReversals() {
 		cardsArray = []; // clear array
 		points += 1; // add 1 point
 		if (points == 8) { // if points == 8 you won ;)
-			alert("WELL DONE");
+			toggleModal();
 		}	
 	}
 	else { // if card back weren't the same:
@@ -132,6 +132,25 @@ function addListeners() {
 		card.addEventListener("click", turnCard);
 	});
 }
+
+/*
+Code below handle showing modal when game finish
+*/
+function toggleModal() {
+	modal.classList.toggle("show-modal");
+}
+
+function windowOnClick(event) {
+	if (event.target === modal) {
+		toggleModal();
+	}
+}
+
+const modal = document.querySelector(".modal");
+const closeButton = document.querySelector(".mc__close-button");
+
+closeButton.addEventListener("click", toggleModal);
+window.addEventListener("click", windowOnClick);
 
 
 let cardsArray = []; // Declare empty array for memorize cards
