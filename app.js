@@ -43,6 +43,7 @@ function checkReversals() {
 		if (points == 1) { // if points == 8 you won ;)
 			toggleModal();
 			timerStop();
+
 		}	
 	}
 	else { // if card back weren't the same:
@@ -117,10 +118,12 @@ function restartGame() {
 	moves = 0; // reset moves
 	points = 0; // reset points
 	moves_info.innerHTML = moves; // change moves to actual value
-	timerStop();
+	timerStop(); // stop timer
 	stars.forEach(function(element) { // this loop reset stars
 		element.className = "icon-star";
 	});
+	seconds = 0; // reset seconds
+	time.innerHTML = seconds;
 }
 
 /*
@@ -140,6 +143,10 @@ Code below handle showing modal when game finish
 */
 function toggleModal() {
 	modal.classList.toggle("show-modal");
+	const final_score = document.querySelector(".final-score");
+	final_score.innerHTML = document.querySelector(".game-bar__stars").innerHTML;
+	document.querySelector(".mc__seconds").innerHTML = seconds;
+
 }
 
 function windowOnClick(event) {
@@ -169,12 +176,7 @@ function timer() {
 
 function timerStop() {
 	clearTimeout(t);
-	seconds = 0;
-	time.innerHTML = seconds;
 }
-
-
-
 
 let cardsArray = []; // Declare empty array for memorize cards
 let points = 0; // Declare points variable to count points
@@ -182,8 +184,14 @@ let flag = true; // Declare flag to check if the function can be performed
 let moves = 0;
 const button = document.querySelector(".game-bar__restart"); // Grab button element
 const moves_info = document.querySelector(".moves__count");  // Grab html element with number of moves
+const play_again = document.querySelector(".mc__play-again"); // Grab button in modal window
 
-button.addEventListener("click", restartGame);
+button.addEventListener("click", restartGame); // Restart game when button clicked
+
+play_again.addEventListener("click", function () { // Restart game when button in modal window clicked, and hide modal
+	restartGame();
+	toggleModal();
+});
 
 // Grab all elements with "card__back" class
 const card_backs = document.querySelectorAll(".card__back");

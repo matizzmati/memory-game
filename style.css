@@ -155,6 +155,32 @@ h1 {
     font-size: 18px;
 }
 
+.mc__score-label {
+	display: flex;
+}
+
+.mc__info {
+	min-width: 90px;
+}
+
+.mc__info:last-of-type {
+	min-width: 85px;
+}
+
+.mc__play-again {
+	margin: auto;
+	margin-top: 10px;
+	display: block;
+	cursor: pointer;
+	border: none;
+	padding: 10px;
+}
+
+.mc__play-again:hover {
+    background-color: darkgray;
+    border-radius: 5px;
+}
+
 /*
 .game-wrapper {
 	display: flex;
