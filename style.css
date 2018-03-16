@@ -13,17 +13,24 @@ h1 {
 	width: 90%;
 	margin: auto;
 	margin-top: 20px;
+	display: -webkit-box;
+	display: -ms-flexbox;
 	display: flex;
-	flex-wrap: wrap;
+	-ms-flex-wrap: wrap;
+	    flex-wrap: wrap;
 }
 
 .game-bar__stars {
+	display: -webkit-box;
+	display: -ms-flexbox;
 	display: flex;
 	width: 50%;
 }
 
 .game-bar__moves {
 	width: 50%;
+	display: -webkit-box;
+	display: -ms-flexbox;
 	display: flex;
 }
 
@@ -49,8 +56,11 @@ h1 {
 }
 
 .game-wrapper {
+	display: -webkit-box;
+	display: -ms-flexbox;
 	display: flex;
-	flex-wrap: wrap;
+	-ms-flex-wrap: wrap;
+	    flex-wrap: wrap;
 	height: 100vw;
 	margin: auto;
 	margin-top: 5px;
@@ -58,7 +68,6 @@ h1 {
 	background-color: #b0e0e6;
 	border-radius: 8px;
 	-webkit-box-shadow: 10px 10px 36px 2px rgba(0,0,0,0.38);
-	-moz-box-shadow: 10px 10px 36px 2px rgba(0,0,0,0.38);
 	box-shadow: 10px 10px 36px 2px rgba(0,0,0,0.38);
 }
 
@@ -68,9 +77,16 @@ h1 {
 	background-color: #0b3047;
 	margin: 2%;
 	border-radius: 8px;
-	box-sizing: border-box;
-	justify-content: center;
-	align-items: center;
+	-webkit-box-sizing: border-box;
+	        box-sizing: border-box;
+	-webkit-box-pack: center;
+	    -ms-flex-pack: center;
+	        justify-content: center;
+	-webkit-box-align: center;
+	    -ms-flex-align: center;
+	        align-items: center;
+	display: -webkit-box;
+	display: -ms-flexbox;
 	display: flex;
 }
 
@@ -79,11 +95,15 @@ h1 {
 }
 	
 .card__back {
-	transform: rotateY(90deg);
+	-webkit-transform: rotateY(90deg);
+	        transform: rotateY(90deg);
 	font-size: 20px;
 	color: white;
-	box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	        box-sizing: border-box;
 	border-radius: 8px;
+	-webkit-transition: all .2s ease-out;
+	-o-transition: all .2s ease-out;
 	transition: all .2s ease-out;
 }
 
@@ -152,6 +172,8 @@ h1 {
 }
 
 .mc__score-label {
+	display: -webkit-box;
+	display: -ms-flexbox;
 	display: flex;
 }
 
@@ -180,12 +202,16 @@ h1 {
 
 @media only screen and (min-width: 290px) {
 	.game-bar__stars {
+	display: -webkit-box;
+	display: -ms-flexbox;
 	display: flex;
 	width: 25%;
 	}
 
 	.game-bar__moves {
 	width: 45%;
+	display: -webkit-box;
+	display: -ms-flexbox;
 	display: flex;
 	}
 

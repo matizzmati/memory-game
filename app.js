@@ -15,7 +15,7 @@ The function below shows shape of card back
 and adds the revealing mechanics
 */
 function turnCard() {
-	if (flag == true) { // only if flag == true, carry on
+	if (flag === true) { // only if flag == true, carry on
 	    const card = this.children[0]; // assign children element of clicked div to variable
 	    showCard(card); // change style of transform to show the shape
 	    cardsArray.push(card); // and push it "cardsArray" 
@@ -40,15 +40,15 @@ function checkReversals() {
 	if (cardsArray[0].className == cardsArray[1].className) { // if card backs were the same:
 		cardsArray = []; // clear array
 		points++; // add 1 point
-		if (points == 1) { // if points == 8 you won ;)
+		if (points == 8) { // if points == 8 you won ;)
 			toggleModal();
 			timerStop();
 
 		}	
 	}
 	else { // if card back weren't the same:
-		hideCard(cardsArray[0]) // hide cards
-		hideCard(cardsArray[1])
+		hideCard(cardsArray[0]); // hide cards
+		hideCard(cardsArray[1]);
 		
 		/*
 		add event listeners again, because it 
