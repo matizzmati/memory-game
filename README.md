@@ -9,3 +9,17 @@ The game is over when all the shapes have been matched.
 
 After the game, information about your time and star rating will be displayed.
 
+
+### Font license 
+
+Font Awesome
+
+   Copyright (C) 2016 by Dave Gandy
+
+   Author:    Dave Gandy
+   License:   SIL ()
+   Homepage:  http://fortawesome.github.com/Font-Awesome/
+
+
+
+
