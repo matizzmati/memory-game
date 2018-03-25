@@ -115,16 +115,16 @@ function restartGame() {
 	});
 	setTimeout(shuffle, 200); // setTimeout function prevents from seeing new shuffled cars for 0.2s (as much as set transition time)
 	addListeners(); // add listeneres again
-	moves = 0; // reset moves
-	points = 0; // reset points
+	updateMoves();
 	moves_info.innerHTML = moves; // change moves to actual value
+	time.innerHTML = seconds;
 	timerStop(); // stop timer
 	stars.forEach(function(element) { // this loop reset stars
 		element.className = "icon-star";
 	});
-	seconds = 0; // reset seconds
-	time.innerHTML = seconds;
+	
 }
+
 
 /*
 Code below assign all html elements with class 
@@ -146,6 +146,7 @@ function toggleModal() {
 	const final_score = document.querySelector(".final-score");
 	final_score.innerHTML = document.querySelector(".game-bar__stars").innerHTML;
 	document.querySelector(".mc__seconds").innerHTML = seconds;
+	document.querySelector(".mc__moves").innerHTML = moves/2;
 
 }
 
@@ -165,7 +166,6 @@ window.addEventListener("click", windowOnClick);
 Code below handle the stopwatch
 */
 const time = document.querySelector(".timer__sec");
-let seconds = 0;
 function timer() {
 	t = setTimeout(function() {
 		seconds++;
@@ -178,13 +178,26 @@ function timerStop() {
 	clearTimeout(t);
 }
 
-let cardsArray = []; // Declare empty array for memorize cards
+
+/*
+This function set values
+*/
+function updateMoves() {
+	seconds = 0;
+	cardsArray = []; // Declare empty array for memorize cards
+	points = 0; // Declare points variable to count points
+	flag = true; // Declare flag to check if the function can be performed
+	moves = 0;
+}
+
+/*let cardsArray = []; // Declare empty array for memorize cards
 let points = 0; // Declare points variable to count points
 let flag = true; // Declare flag to check if the function can be performed
-let moves = 0;
+let moves = 0;*/
+
 const button = document.querySelector(".game-bar__restart"); // Grab button element
 const moves_info = document.querySelector(".moves__count");  // Grab html element with number of moves
-const play_again = document.querySelector(".mc__play-again"); // Grab button in modal window
+const play_again = document.querySelector(".mc__play-again"); // Grab button in modal window 
 
 button.addEventListener("click", restartGame); // Restart game when button clicked
 
@@ -199,5 +212,7 @@ const card_backs = document.querySelectorAll(".card__back");
 // Grab all elements with "icon-star" class
 const stars = document.querySelectorAll(".icon-star");
 
+
+updateMoves();
 shuffle();
 addListeners();
